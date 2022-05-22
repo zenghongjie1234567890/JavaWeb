@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>演示json发送普通的参数值给服务器端</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript" src="script/axios.min.js"></script>
+    <script language="JavaScript">
+        window.onload=function () {
+            var vue=new Vue({
+                "el":"#div01",
+                data:{
+                    uname:"杰杰",
+                    pwd:"ok",
+                },
+                methods:{
+                    text02:function () {
+                        axios({
+                            method:"POST",
+                            url:"text02.do",
+                            //请求参数集合
+                            data:{
+                                uname:vue.uname,
+                                pwd:vue.pwd,
+                            }
+                        })
+                            //成功后执行
+                            .then(function (value) {
+                                console.log(value);
+                            })
+                            //失败后执行
+                            .catch(function () {
+                            })
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="div01">
+    uname:<input type="text" v-model="uname"><br>
+    pwd:<input type="text" v-model="pwd"><br>
+    <input type="button" @click="text02" value="提交">
+</div>
+</body>
+</html>

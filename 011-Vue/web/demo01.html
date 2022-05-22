@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" src="script/vue.js"></script>
+    <script language="JavaScript">
+        function hello(){
+            person.sayHello();
+        }
+
+        //定义js对象方式一：
+        /*
+        var person = new Object();
+        person.pid = "p001";
+        person.pname="jim";
+        person.sayHello = function(){
+            alert("HELLO world");
+        }
+        */
+        //定义js对象方式二：
+        var person = {
+            "pid":"p001",
+            "pname":"jim",
+            "sayHello":function(){
+                alert("你好，曾鸿杰！！");
+            }
+        };
+
+
+        window.onload=function(){
+            //有先后执行的顺序，前面的vue填充后，后面的就修改不了
+            var vue1=new Vue({
+                "el":"#app",
+                data: {
+                    zhj:"OKK"
+                }
+            });
+
+
+            var vue = new Vue({
+                "el":"#div0",
+                //只能写data，里面放入要修改的属性值
+                data:{
+                    zhj:"很帅！！",
+                    uname:"赵银屏",
+                    age:"19",
+                    sex:"男",
+                    num:2,
+                    msg: "hello world !" ,
+                    num1:1,
+                    num2:2,
+                    num3:0,
+                    //定义一个数组
+                    fruitList:[
+                        {fname:"苹果",price:5, fcount:100, remark:"苹果很好吃"},
+                        {fname:"香蕉",price:1, fcount:50, remark:"香蕉很好吃"},
+                    ]
+                },
+                methods:{
+                    myReverse:function (){
+                        this.msg=this.msg.split("").reverse().join("");
+                    }
+                },
+                // 监听函数
+                watch:{
+                    num1:function (newValue) {
+                        this.num3=parseInt(newValue)+parseInt(this.num2)
+                    },
+                    num2:function (newValue) {
+                        this.num3=parseInt(newValue)+parseInt(this.num1);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="div0">
+        <div id="app">{{zhj}}</div>
+<!--        v-bind:HTML标签的原始属性名，可以省略直接写:        -->
+        <input type="text" v-bind:value="uname"/>
+        <input type="text" :value="uname"/>
+        <br>
+<!--        v-model: 双向绑定,input框里面的值会改变age的实际值 ，value可以省略，直接写成v-model=        -->
+<!--        <input type="text" v-model:value="age"/>-->
+        <input type="text" v-model="age"/>
+        <p>{{age}}</p>
+<!--        trim:可以去除首尾空格      -->
+        <input type="text" v-model.trim="sex"/>
+        <p>{{sex}}</p>
+<!--        条件渲染   v-if   v-else    他们之间不能有插入其他节点  比如<br>什么的        -->
+        <input type="text" v-model="num"/>
+        <br>
+        <br>
+        <div v-if="num%2==0" style="width: 200px;height: 100px;background-color: darkblue"></div>
+        <div v-if="num%2==1" style="width: 200px;height: 100px;background-color: yellow"></div>
+        <br>
+<!--        v-show是通过display属性来控制这个div是否显示           -->
+        <div v-show="num%2==0" style="width: 200px;height: 100px;background-color: darkblue"></div>
+        <br>
+<!--        v-for 数组元素的迭代           -->
+        <table border="1" width="400px" cellpadding="4" cellspacing="0">
+            <tr>
+                <th>名称</th>
+                <th>单价</th>
+                <th>库存</th>
+                <th>备注</th>
+            </tr>
+            <tr align="center" v-for="fruit in fruitList">
+                <td>{{fruit.fname}}</td>
+                <td>{{fruit.price}}</td>
+                <td>{{fruit.fcount}}</td>
+                <td>{{fruit.remark}}</td>
+            </tr>
+        </table>
+        <br>
+<!--        v-on 表示执行一个函数，该函数要固定写在vue对象的methods里面         -->
+        <span>{{msg}}</span>
+        <br>
+        <br>
+        <input type="button" value="反转" v-on:click="myReverse"/>
+        <br>
+        <br>
+        <input type="text" v-model="num1" size="2"/>
+        +
+        <input type="text" v-model="num2" size="2"/>
+        =
+        <span>{{num3}}</span>
+    </div>
+</body>
+</html>

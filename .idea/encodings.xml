@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/09_javaweb_thymelear/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09_javaweb_thymelear/src/main/java/com/atguigu/fruit/BaseDAO.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/09_javaweb_thymelear/src/main/java/com/serlvets/AddServlet.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/09_javaweb_thymelear/src/main/java/com/serlvets/IndexServlet.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/09_javaweb_thymelear/src/main/java/com/serlvets/UpdateServlet.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/09_javaweb_thymelear/src/main/java/com/serlvets/httpdemo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/09_javaweb_thymelear/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

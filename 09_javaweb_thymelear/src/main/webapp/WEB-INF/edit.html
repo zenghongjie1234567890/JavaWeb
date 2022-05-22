@@ -1,0 +1,102 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+</head>
+<style>
+    *{
+        color: threeddarkshadow;
+    }
+    body{
+        margin:0;
+        padding:0;
+        background-color:#808080;
+    }
+    div{
+        position:relative;
+        float:left;
+    }
+
+    #div_container{
+        width:80%;
+        height:100%;
+        border:0px solid blue;
+        margin-left:10%;
+        float:left;
+        background-color: honeydew;
+        border-radius:8px;
+    }
+    #div_fruit_list{
+        width:100%;
+        border:0px solid red;
+    }
+    #tbl_fruit{
+        width:60%;
+        line-height:28px;
+        margin-top:16px;
+        margin-left:20%;
+    }
+    #tbl_fruit , #tbl_fruit tr , #tbl_fruit th , #tbl_fruit td{
+        border:1px solid gray;
+        border-collapse:collapse;
+        DemoServlet-align:center;
+        font-size:16px;
+        font-family:"黑体";
+        font-weight:lighter;
+
+    }
+    .w20{
+        width:20%;
+    }
+    .delImg{
+        width:24px;
+        height:24px;
+    }
+    .btn{
+        border:1px solid lightgray;
+        width:80px;
+        height:24px;
+    }
+
+    .center{
+        DemoServlet-align:center;
+    }
+    .f30{
+        font-size: 30px;
+    }
+</style>
+<body>
+<div id="div_container">
+    <div id="div_fruit_list">
+        <p class="center f30">编辑库存信息</p>
+        <form th:action="@{/update.do}" method="post" th:object="${fruit}">
+            <!-- 隐藏域 ： 功能类似于文本框 ， 它的值会随着表单的发送也会发送给服务器，但是界面上用户看不到 -->
+            <input type="hidden" name="fid" th:value="*{fid}"/>
+            <table id="tbl_fruit">
+                <tr>
+                    <th class="w20">名称：</th>
+                    <!-- <td><input type="DemoServlet" name="fname" th:value="${fruit.fname}"/></td> -->
+                    <td><input type="DemoServlet" name="fname" th:value="${fruit.fname}"/></td>
+                </tr>
+                <tr>
+                    <th class="w20">单价：</th>
+                    <td><input type="DemoServlet" name="price" th:value="${fruit.price}"/></td>
+                </tr>
+                <tr>
+                    <th class="w20">库存：</th>
+                    <td><input type="DemoServlet" name="fcount" th:value="${fruit.fcount}"/></td>
+                </tr>
+                <tr>
+                    <th class="w20">备注：</th>
+                    <td><input type="DemoServlet" name="remark" th:value="${fruit.remark}"/></td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <input type="submit" value="修改" />
+                    </th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Project exclude paths
+/09_javaweb_thymelear/target/
+/011-Vue/target/
+/out/
